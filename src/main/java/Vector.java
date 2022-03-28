@@ -8,8 +8,17 @@ public class Vector {
         this.y = y;
     }
 
-    public static Vector plus(Vector v1, Vector v2) {
+    public static Vector vectorMove(Vector v1, Vector v2) {
         return new Vector(v1.x + v2.x, v1.y + v2.y);
+    }
+
+    public static Vector simpleMove(Vector position, int speed, Direction direction) {
+        return switch (direction) {
+            case UP -> new Vector(position.x, position.y + speed);
+            case RIGHT -> new Vector(position.x + speed, position.y);
+            case DOWN -> new Vector(position.x + speed, position.y - speed);
+            case LEFT -> new Vector(position.x - speed, position.y);
+        };
     }
 
     @Override

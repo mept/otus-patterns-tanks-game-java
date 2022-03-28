@@ -11,8 +11,18 @@ public class MovableAdapter implements IMovable {
     }
 
     @Override
-    public Vector getSpeed() {
-        return (Vector) obj.getProperty("Speed");
+    public Vector getVectorSpeed() {
+        return (Vector) obj.getProperty("VectorSpeed");
+    }
+
+    @Override
+    public int getSpeed() {
+        return (int) obj.getProperty("Speed");
+    }
+
+    @Override
+    public Direction getDirection() {
+        return (Direction) obj.getProperty("Direction");
     }
 
     @Override
@@ -21,8 +31,17 @@ public class MovableAdapter implements IMovable {
     }
 
     @Override
-    public void setSpeed(Vector speed) {
+    public void setSpeed(int speed) {
         obj.setProperty("Speed", speed);
     }
 
+    @Override
+    public void setVectorSpeed(Vector vectorSpeed) {
+        obj.setProperty("VectorSpeed", vectorSpeed);
+    }
+
+    @Override
+    public void setDirection(Direction direction) {
+        obj.setProperty("Direction", direction);
+    }
 }

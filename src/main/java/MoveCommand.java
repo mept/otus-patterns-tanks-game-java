@@ -7,6 +7,6 @@ public class MoveCommand implements Command {
 
     @Override
     public void execute() {
-        m.setPosition(Vector.plus(m.getPosition(), m.getSpeed()));
+        m.setPosition(Vector.vectorMove(m.getPosition(), m.getVectorSpeed()));
     }
 }

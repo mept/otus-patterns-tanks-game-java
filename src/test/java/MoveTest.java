@@ -13,7 +13,7 @@ public class MoveTest {
     public void testMove() {
         MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
         movableAdapter.setPosition(new Vector(12, 5));
-        movableAdapter.setSpeed(new Vector(-7, 3));
+        movableAdapter.setVectorSpeed(new Vector(-7, 3));
 
         MoveCommand moveCommand = new MoveCommand(movableAdapter);
         moveCommand.execute();
@@ -22,11 +22,29 @@ public class MoveTest {
     }
 
     @Test
+    @DisplayName("Проверка движения с поворотами")
+    public void testSimpleMove() {
+        MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
+        movableAdapter.setPosition(new Vector(12, 5));
+        movableAdapter.setSpeed(2);
+        movableAdapter.setDirection(Direction.UP);
+
+        MoveForwardCommand moveForwardCommand = new MoveForwardCommand(movableAdapter);
+        moveForwardCommand.execute();
+
+        movableAdapter.setDirection(Direction.RIGHT);
+        movableAdapter.setSpeed(3);
+        moveForwardCommand.execute();
+
+        assertEquals(new Vector(15, 7), movableAdapter.getPosition());
+    }
+
+    @Test
     @DisplayName("Попытка сдвинуть объект, у которого невозможно прочитать положение в пространстве, приводит к ошибке")
     public void testUnableToGetPosition() {
         MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
         movableAdapter.setPosition(null);
-        movableAdapter.setSpeed(new Vector(-7, 3));
+        movableAdapter.setVectorSpeed(new Vector(-7, 3));
 
         MoveCommand moveCommand = new MoveCommand(movableAdapter);
 
@@ -38,7 +56,7 @@ public class MoveTest {
     public void testUnableToGetSpeed() {
         MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
         movableAdapter.setPosition(new Vector(12, 5));
-        movableAdapter.setSpeed(null);
+        movableAdapter.setVectorSpeed(null);
 
         MoveCommand moveCommand = new MoveCommand(movableAdapter);
 
