@@ -1,7 +1,12 @@
+package game.interfaces;
+
+import game.Direction;
+import game.Vector;
+
 public interface IMovable {
     Vector getPosition();
     Vector getVectorSpeed();
-    int getSpeed();
+    Integer getSpeed();
     Direction getDirection();
     void setPosition(Vector position);
     void setSpeed(int speed);

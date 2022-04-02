@@ -1,3 +1,7 @@
+package game;
+
+import game.interfaces.UObject;
+
 import java.util.HashMap;
 import java.util.Map;
 

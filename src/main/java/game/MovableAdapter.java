@@ -1,3 +1,8 @@
+package game;
+
+import game.interfaces.IMovable;
+import game.interfaces.UObject;
+
 public class MovableAdapter implements IMovable {
     UObject obj;
 
@@ -16,13 +21,13 @@ public class MovableAdapter implements IMovable {
     }
 
     @Override
-    public int getSpeed() {
-        return (int) obj.getProperty("Speed");
+    public Integer getSpeed() {
+        return (Integer) obj.getProperty("Speed");
     }
 
     @Override
     public Direction getDirection() {
-        return (Direction) obj.getProperty("Direction");
+        return (Direction) obj.getProperty("game.Direction");
     }
 
     @Override
@@ -42,6 +47,6 @@ public class MovableAdapter implements IMovable {
 
     @Override
     public void setDirection(Direction direction) {
-        obj.setProperty("Direction", direction);
+        obj.setProperty("game.Direction", direction);
     }
 }
