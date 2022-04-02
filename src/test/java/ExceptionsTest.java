@@ -51,12 +51,10 @@ public class ExceptionsTest {
         System.err.println(baos);
 
         // Первый неудачный запуск команды пишет в WARN, повторный - в ERROR
-        assertEquals("""
-                [main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана начальная позиция\r
-                [main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 1) - Не указана начальная позиция\r
-                [main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана векторная скорость\r
-                [main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 1) - Не указана векторная скорость\r
-                """, baos.toString());
+        assertEquals("[main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана начальная позиция" + System.lineSeparator() +
+                "[main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 1) - Не указана начальная позиция" + System.lineSeparator() +
+                "[main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана векторная скорость" + System.lineSeparator() +
+                "[main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 1) - Не указана векторная скорость" + System.lineSeparator(), baos.toString());
     }
 
     @Test
@@ -91,11 +89,9 @@ public class ExceptionsTest {
         System.err.println(baos);
 
         // Первый неудачный запуск команды пишет в WARN, повторный - в ERROR. Дополнительно пишется число попыток
-        assertEquals("""
-                [main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана начальная позиция\r
-                [main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 2) - Не указана начальная позиция\r
-                [main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана векторная скорость\r
-                [main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 2) - Не указана векторная скорость\r
-                """, baos.toString());
+        assertEquals("[main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана начальная позиция" + System.lineSeparator() +
+                "[main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 2) - Не указана начальная позиция" + System.lineSeparator() +
+                "[main] WARN game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения - Не указана векторная скорость" + System.lineSeparator() +
+                "[main] ERROR game.utils.ErrorHandler - Ошибка при попытке прямолинейного движения (попыток: 2) - Не указана векторная скорость" + System.lineSeparator(), baos.toString());
     }
 }
