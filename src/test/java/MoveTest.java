@@ -1,3 +1,8 @@
+import game.*;
+import game.commands.MoveCommand;
+import game.commands.MoveForwardCommand;
+import game.exceptions.MoveException;
+import game.exceptions.MoveForwardException;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -10,7 +15,7 @@ public class MoveTest {
 
     @Test
     @DisplayName("Для объекта, находящегося в точке (12, 5) и движущегося со скоростью (-7, 3) движение меняет положение объекта на (5, 8)")
-    public void testMove() {
+    public void testMove() throws MoveException {
         MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
         movableAdapter.setPosition(new Vector(12, 5));
         movableAdapter.setVectorSpeed(new Vector(-7, 3));
@@ -23,7 +28,7 @@ public class MoveTest {
 
     @Test
     @DisplayName("Проверка движения с поворотами")
-    public void testSimpleMove() {
+    public void testSimpleMove() throws MoveForwardException {
         MovableAdapter movableAdapter = new MovableAdapter(new Vehicle());
         movableAdapter.setPosition(new Vector(12, 5));
         movableAdapter.setSpeed(2);
@@ -48,7 +53,7 @@ public class MoveTest {
 
         MoveCommand moveCommand = new MoveCommand(movableAdapter);
 
-        assertThrows(NullPointerException.class, moveCommand::execute);
+        assertThrows(MoveException.class, moveCommand::execute);
     }
 
     @Test
@@ -60,7 +65,7 @@ public class MoveTest {
 
         MoveCommand moveCommand = new MoveCommand(movableAdapter);
 
-        assertThrows(NullPointerException.class, moveCommand::execute);
+        assertThrows(MoveException.class, moveCommand::execute);
     }
 
     @Test
